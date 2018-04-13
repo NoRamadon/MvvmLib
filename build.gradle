@@ -1,0 +1,83 @@
+// Top-level build file where you can add configuration options common to all sub-projects/modules.
+
+buildscript {
+    ext.versions = [
+            'minSdk'           : 16,
+            'compileSdk'       : 27,
+
+            'buildTools'       : '27.0.2',
+            'androidPlugin'    : '3.1.1',
+            'kotlin'           : '1.2.31',
+            'archComp'         : '1.1.0',
+            'constraint'       : '1.0.2',
+            'dagger'           : '2.12',
+            'liveData'         : '1.1.1',
+            'gson'             : '2.8.0',
+            'retrofit'         : '2.3.0',
+            'retrofitRxAdapter': '1.0.0',
+            'okhttp'           : '3.9.0',
+            'picasso'          : '2.5.2',
+            'rxJava'           : '2.1.7',
+            'rxAndroid'        : '2.0.1',
+            'junit'            : '4.12'
+    ]
+
+    ext.deps = [
+            android  : [
+                    'gradlePlugin'   : "com.android.tools.build:gradle:${versions.androidPlugin}"
+            ],
+            support  : [
+                    'appCompat'    : "com.android.support:appcompat-v7:${versions.buildTools}",
+                    'recyclerView' : "com.android.support:recyclerview-v7:${versions.buildTools}",
+                    'constraint'     : "com.android.support.constraint:constraint-layout:${versions.constraint}"
+            ],
+            kotlin   : [
+                    'gradlePlugin': "org.jetbrains.kotlin:kotlin-gradle-plugin:${versions.kotlin}",
+                    'stdlib'      : "org.jetbrains.kotlin:kotlin-stdlib-jre7:${versions.kotlin}",
+            ],
+            reactivex: [
+                    'rxJava'   : "io.reactivex.rxjava2:rxjava:${versions.rxJava}",
+                    'rxAndroid': "io.reactivex.rxjava2:rxandroid:${versions.rxAndroid}"
+            ],
+            google   : [
+                    'dagger'           : "com.google.dagger:dagger:${versions.dagger}",
+                    'daggerProcessor'  : "com.google.dagger:dagger-compiler:${versions.dagger}",
+                    'gson'             : "com.google.code.gson:gson:${versions.gson}",
+                    'liveDataProcessor': "android.arch.lifecycle:compiler:${versions.liveData}",
+                    'liveData'         : "android.arch.lifecycle:extensions:${versions.liveData}",
+            ],
+            square   : [
+                    'retrofit'         : "com.squareup.retrofit2:retrofit:${versions.retrofit}",
+                    'gsonConverter'    : "com.squareup.retrofit2:converter-gson:${versions.retrofit}",
+                    'okhttp'           : "com.squareup.okhttp3:okhttp:${versions.okhttp}",
+                    'picasso'          : "com.squareup.picasso:picasso:${versions.picasso}",
+                    'retrofitRxAdapter': "com.jakewharton.retrofit:retrofit2-rxjava2-adapter:${versions.retrofitRxAdapter}"
+            ],
+            test     : [
+                    'junit'          : "junit:junit:${versions.junit}"
+            ]
+    ]
+
+    repositories {
+        google()
+        jcenter()
+    }
+    dependencies {
+        classpath deps.android.gradlePlugin
+        classpath deps.kotlin.gradlePlugin
+
+        // NOTE: Do not place your application dependencies here; they belong
+        // in the individual module build.gradle files
+    }
+}
+
+allprojects {
+    repositories {
+        google()
+        jcenter()
+    }
+}
+
+task clean(type: Delete) {
+    delete rootProject.buildDir
+}
