@@ -1,9 +1,6 @@
 package com.dmi.mvvm_kotlin.view.fragment
 
-import android.os.Bundle
-import android.view.View
 import com.android.databinding.library.baseAdapters.BR
-
 import com.dmi.mvvm_kotlin.R
 import com.dmi.mvvm_kotlin.databinding.FragmentLoginBinding
 import com.dmi.mvvm_kotlin.view.base.BaseFragment
@@ -21,6 +18,6 @@ class LoginFragment : BaseFragment<FragmentLoginBinding, LoginViewModel>() {
     }
 
     override fun getViewModel(): LoginViewModel {
-        return LoginViewModel()
+        return LoginViewModel(activity!!.application)
     }
 }

@@ -1,10 +1,27 @@
 package com.dmi.mvvm_kotlin.vm
 
 import android.app.Application
+import android.arch.lifecycle.MutableLiveData
+import android.util.Log
+import com.dmi.mvvm_kotlin.data.repository.UserRepository
 import com.dmi.mvvm_kotlin.view.base.BaseViewModel
 
-class MainViewModel: BaseViewModel(Application()) {
+class MainViewModel(application: Application) : BaseViewModel(application) {
 
-    var sampleString: String = "Hello from view model."
+    override fun onDestroyView() {
+        dismissLoading()
+    }
+
+    private val userRepository = UserRepository()
+
+    val userName = MutableLiveData<String>()
+
+    init {
+        showLoading()
+        userRepository.receiveNewUser {
+            userName.postValue(it.name)
+            Log.d("post", it.name)
+        }
+    }
 
 }

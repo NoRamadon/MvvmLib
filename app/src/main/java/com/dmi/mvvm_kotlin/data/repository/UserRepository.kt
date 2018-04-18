@@ -15,9 +15,8 @@ class UserRepository {
         timer.schedule(object : TimerTask() {
             override fun run() {
                 val nameRandom = random.nextInt(UserNames.values().size)
-                val ageRandom = random.nextInt(5)
 
-                newUserReceived.invoke(User(UserNames.values()[nameRandom].name, ageRandom))
+                newUserReceived.invoke(User(UserNames.values()[nameRandom].name))
             }
         }, period, period)
     }

@@ -9,7 +9,7 @@ import com.dmi.mvvm_kotlin.vm.MainViewModel
 class MainFragment : BaseFragment<FragmentMainBinding, MainViewModel>() {
 
     override fun getViewModel(): MainViewModel {
-        return MainViewModel()
+        return MainViewModel(activity!!.application)
     }
 
     override fun getLayoutId(): Int {
