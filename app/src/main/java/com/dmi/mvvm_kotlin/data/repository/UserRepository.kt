@@ -1,25 +1,20 @@
 package com.dmi.mvvm_kotlin.data.repository
 
 import com.dmi.mvvm_kotlin.data.model.User
+import io.reactivex.Observable
+import io.reactivex.android.schedulers.AndroidSchedulers
+import io.reactivex.schedulers.Schedulers
 import java.util.*
 import java.util.concurrent.TimeUnit
 
-typealias NewUserReceived = (User) -> Unit
-
 class UserRepository {
-    private val timer = Timer()
-    private val random = Random()
-    private val period = TimeUnit.SECONDS.toMillis(1)
 
-    internal fun receiveNewUser(newUserReceived: NewUserReceived) {
-        timer.schedule(object : TimerTask() {
-            override fun run() {
-                val nameRandom = random.nextInt(UserNames.values().size)
-
-                newUserReceived.invoke(User(UserNames.values()[nameRandom].name))
-            }
-        }, period, period)
-    }
+    fun getUser(): Observable<User> {
+        return Observable.interval(5, TimeUnit.SECONDS)
+                .map { val nameRandom = Random().nextInt(UserNames.values().size)
+                    User(UserNames.values()[nameRandom].name) }
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread()) }
 }
 
 internal enum class UserNames {

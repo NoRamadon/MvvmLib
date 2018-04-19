@@ -18,7 +18,7 @@ class MainViewModel(application: Application) : BaseViewModel(application) {
 
     init {
         showLoading()
-        userRepository.receiveNewUser {
+        userRepository.getUser().subscribe() {
             userName.postValue(it.name)
             Log.d("post", it.name)
         }
