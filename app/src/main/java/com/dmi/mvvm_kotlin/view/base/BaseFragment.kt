@@ -1,5 +1,6 @@
 package com.dmi.mvvm_kotlin.view.base
 
+import android.content.Context
 import android.databinding.DataBindingUtil
 import android.databinding.ViewDataBinding
 import android.os.Bundle
@@ -43,9 +44,9 @@ abstract class BaseFragment<B : ViewDataBinding, out VM : BaseViewModel> : Fragm
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
+        getViewModel().onCreate()
         mViewDataBinding.setLifecycleOwner(this)
         mViewDataBinding.setVariable(getBindingVariable(), getViewModel())
-        mViewDataBinding.executePendingBindings()
     }
 
     override fun onDestroyView() {

@@ -9,7 +9,7 @@ import com.dmi.mvvm_kotlin.view.base.BaseViewModel
 
 class LoginViewModel(application: Application): BaseViewModel(application) {
 
-    override fun onDestroyView() {
+    override fun onCreate() {
 
     }
 

@@ -10,7 +10,7 @@ import java.util.concurrent.TimeUnit
 class UserRepository {
 
     fun getUser(): Observable<User> {
-        return Observable.interval(5, TimeUnit.SECONDS)
+        return Observable.interval(1, TimeUnit.SECONDS)
                 .map { val nameRandom = Random().nextInt(UserNames.values().size)
                     User(UserNames.values()[nameRandom].name) }
                 .subscribeOn(Schedulers.io())
