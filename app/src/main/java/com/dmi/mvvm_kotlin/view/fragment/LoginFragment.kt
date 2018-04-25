@@ -9,15 +9,13 @@ import com.dmi.mvvm_kotlin.vm.LoginViewModel
 
 class LoginFragment : BaseFragment<FragmentLoginBinding, LoginViewModel>() {
 
+    override val viewModel by lazy {  LoginViewModel(activity!!.application)}
+
     override fun getLayoutId(): Int {
         return R.layout.fragment_login
     }
 
     override fun getBindingVariable(): Int {
         return BR.vm
-    }
-
-    override fun getViewModel(): LoginViewModel {
-        return LoginViewModel(activity!!.application)
     }
 }

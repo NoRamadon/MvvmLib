@@ -6,7 +6,7 @@ buildscript {
             'compileSdk'       : 27,
 
             'buildTools'       : '27.0.2',
-            'androidPlugin'    : '3.1.1',
+            'androidPlugin'    : '3.1.2',
             'kotlin'           : '1.2.31',
             'archComp'         : '1.1.0',
             'constraint'       : '1.0.2',
@@ -28,6 +28,7 @@ buildscript {
             ],
             support  : [
                     'appCompat'    : "com.android.support:appcompat-v7:${versions.buildTools}",
+                    'design'    : "com.android.support:design:${versions.buildTools}",
                     'recyclerView' : "com.android.support:recyclerview-v7:${versions.buildTools}",
                     'constraint'     : "com.android.support.constraint:constraint-layout:${versions.constraint}"
             ],

@@ -28,6 +28,7 @@ dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
     implementation deps.support.appCompat
+    implementation deps.support.design
     implementation deps.support.recyclerView
     implementation deps.support.constraint
 
@@ -37,8 +38,6 @@ dependencies {
     implementation deps.kotlin.stdlib
 
     implementation deps.google.dagger
-    implementation 'com.android.support:support-v4:27.1.0'
-    implementation 'com.android.support.constraint:constraint-layout:1.0.2'
     kapt deps.google.daggerProcessor
     implementation deps.google.gson
     annotationProcessor deps.google.liveDataProcessor

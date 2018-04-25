@@ -1,6 +1,5 @@
 package com.dmi.mvvm_kotlin.view.base
 
-import android.content.Context
 import android.databinding.DataBindingUtil
 import android.databinding.ViewDataBinding
 import android.os.Bundle
@@ -12,6 +11,13 @@ import android.view.ViewGroup
 
 
 abstract class BaseFragment<B : ViewDataBinding, out VM : BaseViewModel> : Fragment() {
+
+    /**
+     * Override for set view model
+     *
+     * @return view model instance
+     */
+    protected abstract val viewModel: VM
 
     private lateinit var mRootView: View
     private lateinit var mViewDataBinding: B
@@ -29,13 +35,6 @@ abstract class BaseFragment<B : ViewDataBinding, out VM : BaseViewModel> : Fragm
      */
     abstract fun getBindingVariable(): Int
 
-    /**
-     * Override for set view model
-     *
-     * @return view model instance
-     */
-    abstract fun getViewModel(): VM
-
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         mViewDataBinding = DataBindingUtil.inflate(inflater, getLayoutId(), container, false)
         mRootView = mViewDataBinding.root
@@ -44,14 +43,9 @@ abstract class BaseFragment<B : ViewDataBinding, out VM : BaseViewModel> : Fragm
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        getViewModel().onCreate()
+
         mViewDataBinding.setLifecycleOwner(this)
-        mViewDataBinding.setVariable(getBindingVariable(), getViewModel())
-    }
-
-    override fun onDestroyView() {
-        super.onDestroyView()
-
-        getViewModel().onDestroyView()
+        mViewDataBinding.setVariable(getBindingVariable(), viewModel)
+        mViewDataBinding.executePendingBindings()
     }
 }
