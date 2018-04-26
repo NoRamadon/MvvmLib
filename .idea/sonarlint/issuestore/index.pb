@@ -37,8 +37,6 @@ k
 ;app/src/main/java/com/dmi/mvvm_kotlin/di/AppAppComponent.kt,a/c/acabd55f5af2b3c3ae3791a7ef7ed50e9fccad69
 g
 7app/src/main/java/com/dmi/mvvm_kotlin/LibApplication.kt,5/9/59fd19020bbc5db40f9a0dac4c783693947bac6c
-’
-bapp/build/generated/source/kapt/debug/com/dmi/mvvm_kotlin/databinding/FragmentMainBindingImpl.java,4/d/4dfd74e5399d5d565b4449bb08e196ec66b748f7
 y
 Iapp/src/main/java/com/dmi/mvvm_kotlin/util/MovableFloatingActionButton.kt,d/0/d00675418874ba584b7584a842f6a4f121a06d57
 A
@@ -47,3 +45,7 @@ A
 settings.gradle,0/5/05efc8b1657769a27696d478ded1e95f38737233
 @
 local.properties,0/7/0712df971a99ac4d2fccb8e0fb19f377f3374cca
+b
+2app/src/main/res/drawable/ic_camera_black_24dp.xml,f/b/fb857c1ac1b1587f85f6277b1701c1450d6f9ff8
+S
+#app/src/main/res/values/strings.xml,d/2/d2281fbb3027de2722081a53408dd77628bf080e

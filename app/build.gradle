@@ -44,7 +44,6 @@ dependencies {
     implementation deps.google.liveData
 
     implementation deps.square.picasso
-
     implementation deps.square.retrofit
     implementation deps.square.okhttp
     implementation deps.square.gsonConverter

@@ -3,11 +3,12 @@ package com.dmi.mvvm_kotlin.vm
 import android.app.Application
 import android.arch.lifecycle.MutableLiveData
 import com.dmi.mvvm_kotlin.LibApplication
-import com.dmi.mvvm_kotlin.R
+import com.dmi.mvvm_kotlin.bus.RxBus
+import com.dmi.mvvm_kotlin.bus.event.ReplaceFragmentEvent
 import com.dmi.mvvm_kotlin.data.model.User
 import com.dmi.mvvm_kotlin.data.repository.UserRepository
 import com.dmi.mvvm_kotlin.view.base.BaseViewModel
-import com.dmi.mvvm_kotlin.view.fragment.MainFragment
+import com.dmi.mvvm_kotlin.view.fragment.LoginFragment
 import javax.inject.Inject
 
 class MainViewModel(application: Application) : BaseViewModel(application) {
@@ -29,19 +30,12 @@ class MainViewModel(application: Application) : BaseViewModel(application) {
                 })
     }
 
-    fun reCreateSubscription() {
-        getUserUpdate()
+    fun sendEventOne() {
+        RxBus.publish(ReplaceFragmentEvent(LoginFragment()))
     }
 
-    fun removeSubscription() {
-        //clearSubscription()
-        destroyFragment()
-    }
-
-    private fun destroyFragment(){
-        /*getApplication<LibApplication>()..supportFragmentManager.beginTransaction()
-                .remove(MainFragment())
-                .commit()*/
+    fun sendEventTwo() {
+        RxBus.publish(ReplaceFragmentEvent(LoginFragment()))
     }
 
     override fun onCleared() {

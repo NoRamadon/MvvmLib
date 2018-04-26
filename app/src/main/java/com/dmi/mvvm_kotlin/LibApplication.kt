@@ -16,6 +16,7 @@ class LibApplication: Application() {
 
         appComponent = DaggerAppComponent
                 .builder()
-                .repositoryModule(RepositoryModule()).build()
+                .repositoryModule(RepositoryModule())
+                .build()
     }
 }
