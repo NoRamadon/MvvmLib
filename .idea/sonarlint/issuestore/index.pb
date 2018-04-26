@@ -37,8 +37,6 @@ k
 ;app/src/main/java/com/dmi/mvvm_kotlin/di/AppAppComponent.kt,a/c/acabd55f5af2b3c3ae3791a7ef7ed50e9fccad69
 g
 7app/src/main/java/com/dmi/mvvm_kotlin/LibApplication.kt,5/9/59fd19020bbc5db40f9a0dac4c783693947bac6c
-y
-Iapp/src/main/java/com/dmi/mvvm_kotlin/util/MovableFloatingActionButton.kt,d/0/d00675418874ba584b7584a842f6a4f121a06d57
 A
 gradle.properties,2/a/2afbb999f001938c88fa43fc2ef52abf0f8213e4
 ?
@@ -49,3 +47,9 @@ b
 2app/src/main/res/drawable/ic_camera_black_24dp.xml,f/b/fb857c1ac1b1587f85f6277b1701c1450d6f9ff8
 S
 #app/src/main/res/values/strings.xml,d/2/d2281fbb3027de2722081a53408dd77628bf080e
+’
+bapp/build/generated/source/kapt/debug/com/dmi/mvvm_kotlin/databinding/FragmentMainBindingImpl.java,4/d/4dfd74e5399d5d565b4449bb08e196ec66b748f7
+w
+Gapp/src/main/java/com/dmi/mvvm_kotlin/bus/event/ReplaceFragmentEvent.kt,6/c/6c0a8e435eaafadea8a80301b0b13538c6955feb
+b
+2app/src/main/java/com/dmi/mvvm_kotlin/bus/RxBus.kt,7/1/7144b82012bb2a67237eac00d730d249c826afeb

@@ -11,6 +11,7 @@ import android.view.ViewGroup
 import com.dmi.mvvm_kotlin.R
 import com.dmi.mvvm_kotlin.bus.RxBus
 import com.dmi.mvvm_kotlin.bus.event.ReplaceFragmentEvent
+import com.dmi.mvvm_kotlin.bus.event.RxBusEvent
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.disposables.Disposable
 
@@ -69,10 +70,16 @@ abstract class BaseFragment<B : ViewDataBinding, out VM : BaseViewModel> : Fragm
     }
 
     private fun replaceFragment(): Disposable{
-        return RxBus.listen(ReplaceFragmentEvent::class.java).subscribe({
-            activity!!.supportFragmentManager.beginTransaction()
-                    .replace(R.id.mainContent, it.fragment)
-                    .commit()
+        return RxBus.listen(RxBusEvent::class.java).subscribe({
+            when(it){
+                is ReplaceFragmentEvent -> replaceFragment(it.fragment)
+            }
         })
+    }
+
+    private fun replaceFragment(fragment: Fragment){
+        activity!!.supportFragmentManager.beginTransaction()
+                .replace(R.id.mainContent, fragment)
+                .commit()
     }
 }
