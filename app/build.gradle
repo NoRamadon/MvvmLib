@@ -31,6 +31,9 @@ dependencies {
     implementation deps.support.design
     implementation deps.support.recyclerView
     implementation deps.support.constraint
+    implementation deps.support.support
+
+    implementation deps.play.map
 
     implementation deps.reactivex.rxJava
     implementation deps.reactivex.rxAndroid

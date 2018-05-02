@@ -17,14 +17,16 @@ abstract class BaseActivity: AppCompatActivity(){
     /**
      * @return fragment
      */
-    abstract fun getFirstFragment(): Fragment
+    abstract val firstFragment: Fragment
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(getLayoutId())
 
-        supportFragmentManager.beginTransaction()
-                .replace(R.id.mainContent, getFirstFragment())
-                .commit()
+        if (savedInstanceState == null) {
+            supportFragmentManager.beginTransaction()
+                    .replace(R.id.mainContent, firstFragment)
+                    .commit()
+        }
     }
 }

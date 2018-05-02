@@ -53,3 +53,5 @@ w
 Gapp/src/main/java/com/dmi/mvvm_kotlin/bus/event/ReplaceFragmentEvent.kt,6/c/6c0a8e435eaafadea8a80301b0b13538c6955feb
 b
 2app/src/main/java/com/dmi/mvvm_kotlin/bus/RxBus.kt,7/1/7144b82012bb2a67237eac00d730d249c826afeb
+d
+4app/src/main/java/com/dmi/mvvm_kotlin/BindAdapter.kt,2/9/29facc532c90c8eb49d33d5721cf791b7b8791c4

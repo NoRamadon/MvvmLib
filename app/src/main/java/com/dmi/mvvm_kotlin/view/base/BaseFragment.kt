@@ -5,6 +5,7 @@ import android.databinding.ViewDataBinding
 import android.os.Bundle
 import android.support.annotation.LayoutRes
 import android.support.v4.app.Fragment
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -23,36 +24,41 @@ abstract class BaseFragment<B : ViewDataBinding, out VM : BaseViewModel> : Fragm
     private var mSubscriptions = CompositeDisposable()
 
     /**
-     * Override for set view model
+     * Override for view model
      *
-     * @return view model instance
      */
     protected abstract val viewModel: VM
 
     /**
-     * @return layout resource id
+     * Override for binding variable
+     *
      */
-    @LayoutRes
-    abstract fun getLayoutId(): Int
+    protected abstract val bindingVariable: Int
 
     /**
-     * Override for set binding variable
-     *
-     * @return variable id
+     * @return layout resource id
      */
-    abstract fun getBindingVariable(): Int
+    protected abstract val layoutId: Int
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+
+        retainInstance = true //make live data survive on configuration change
+    }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
-        mViewDataBinding = DataBindingUtil.inflate(inflater, getLayoutId(), container, false)
+        mViewDataBinding = DataBindingUtil.inflate(inflater, layoutId, container, false)
         mRootView = mViewDataBinding.root
         return mRootView
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        mViewDataBinding.setLifecycleOwner(this)
-        mViewDataBinding.setVariable(getBindingVariable(), viewModel)
+        mViewDataBinding.setLifecycleOwner(activity)
+        mViewDataBinding.setVariable(bindingVariable, viewModel)
         mViewDataBinding.executePendingBindings()
+
+        viewModel.onActivityCreated()
     }
 
     override fun onPause() {
@@ -62,24 +68,42 @@ abstract class BaseFragment<B : ViewDataBinding, out VM : BaseViewModel> : Fragm
 
     override fun onResume() {
         super.onResume()
-        registerBus()
+        registerEvent()
     }
 
-    private fun registerBus(){
-        mSubscriptions.addAll(replaceFragment())
+    private fun registerEvent(){
+        mSubscriptions.addAll(registerBus())
     }
 
-    private fun replaceFragment(): Disposable{
+    private fun registerBus(): Disposable{
         return RxBus.listen(RxBusEvent::class.java).subscribe({
             when(it){
-                is ReplaceFragmentEvent -> replaceFragment(it.fragment)
+                is ReplaceFragmentEvent -> replaceFragment(it)
             }
         })
     }
 
-    private fun replaceFragment(fragment: Fragment){
+    private fun replaceFragment(event: ReplaceFragmentEvent){
         activity!!.supportFragmentManager.beginTransaction()
-                .replace(R.id.mainContent, fragment)
+                .replace(R.id.mainContent, event.fragment)
                 .commit()
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+
+        Log.d("status: ", "onDestroy")
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+
+        Log.d("status: ", "onDestroyView")
+    }
+
+    override fun onDetach() {
+        super.onDetach()
+
+        Log.d("status: ", "onDetach")
     }
 }

@@ -4,10 +4,11 @@ buildscript {
     ext.versions = [
             'minSdk'           : 16,
             'compileSdk'       : 27,
-
-            'buildTools'       : '27.0.2',
+            'permissions'      : '3.2.0',
+            'buildTools'       : '27.1.1',
+            'playService'      : '15.0.0',
             'androidPlugin'    : '3.1.2',
-            'kotlin'           : '1.2.31',
+            'kotlin'           : '1.2.40',
             'archComp'         : '1.1.0',
             'constraint'       : '1.0.2',
             'dagger'           : '2.12',
@@ -26,11 +27,15 @@ buildscript {
             android  : [
                     'gradlePlugin'   : "com.android.tools.build:gradle:${versions.androidPlugin}"
             ],
+            play  : [
+                    'map'   : "com.google.android.gms:play-services-maps:${versions.playService}"
+            ],
             support  : [
                     'appCompat'    : "com.android.support:appcompat-v7:${versions.buildTools}",
-                    'design'    : "com.android.support:design:${versions.buildTools}",
+                    'design'       : "com.android.support:design:${versions.buildTools}",
                     'recyclerView' : "com.android.support:recyclerview-v7:${versions.buildTools}",
-                    'constraint'     : "com.android.support.constraint:constraint-layout:${versions.constraint}"
+                    'support'      : "com.android.support:support-v4:${versions.buildTools}",
+                    'constraint'   : "com.android.support.constraint:constraint-layout:${versions.constraint}"
             ],
             kotlin   : [
                     'gradlePlugin': "org.jetbrains.kotlin:kotlin-gradle-plugin:${versions.kotlin}",
@@ -54,6 +59,10 @@ buildscript {
                     'picasso'          : "com.squareup.picasso:picasso:${versions.picasso}",
                     'retrofitRxAdapter': "com.jakewharton.retrofit:retrofit2-rxjava2-adapter:${versions.retrofitRxAdapter}"
             ],
+            lib   : [
+                    'permissionsDispatcher'  : "com.github.hotchemi:permissionsdispatcher:${versions.permissions}",
+                    'permissionProcessor'    : "com.github.hotchemi:permissionsdispatcher-processor:${versions.permissions}"
+            ],
             test     : [
                     'junit'          : "junit:junit:${versions.junit}"
             ]
@@ -62,6 +71,7 @@ buildscript {
     repositories {
         google()
         jcenter()
+        maven { url 'http://oss.jfrog.org/artifactory/oss-snapshot-local/' }
     }
     dependencies {
         classpath deps.android.gradlePlugin

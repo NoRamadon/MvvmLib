@@ -6,16 +6,11 @@ import com.dmi.mvvm_kotlin.databinding.FragmentLoginBinding
 import com.dmi.mvvm_kotlin.view.base.BaseFragment
 import com.dmi.mvvm_kotlin.vm.LoginViewModel
 
-
 class LoginFragment : BaseFragment<FragmentLoginBinding, LoginViewModel>() {
 
     override val viewModel by lazy {  LoginViewModel(activity!!.application)}
 
-    override fun getLayoutId(): Int {
-        return R.layout.fragment_login
-    }
+    override val bindingVariable by lazy { BR.vm }
 
-    override fun getBindingVariable(): Int {
-        return BR.vm
-    }
+    override val layoutId by lazy { R.layout.fragment_login }
 }

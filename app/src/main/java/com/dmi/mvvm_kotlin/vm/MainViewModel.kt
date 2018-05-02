@@ -2,45 +2,23 @@ package com.dmi.mvvm_kotlin.vm
 
 import android.app.Application
 import android.arch.lifecycle.MutableLiveData
-import com.dmi.mvvm_kotlin.LibApplication
-import com.dmi.mvvm_kotlin.bus.RxBus
-import com.dmi.mvvm_kotlin.bus.event.ReplaceFragmentEvent
-import com.dmi.mvvm_kotlin.data.model.User
-import com.dmi.mvvm_kotlin.data.repository.UserRepository
+import android.util.Log
+import com.dmi.mvvm_kotlin.data.usecase.MapUseCase
 import com.dmi.mvvm_kotlin.view.base.BaseViewModel
-import com.dmi.mvvm_kotlin.view.fragment.LoginFragment
-import javax.inject.Inject
+import com.google.android.gms.maps.model.LatLng
+
 
 class MainViewModel(application: Application) : BaseViewModel(application) {
 
-    @Inject
-    lateinit var userRepository: UserRepository
+    val pinAddress = MutableLiveData<String>()
 
-    val user = MutableLiveData<User>()
-
-    init {
-        LibApplication.appComponent.inject(this)
-        getUserUpdate()
+    fun receiveUpdateLocation(latLng: LatLng) {
+        MapUseCase().getAddress(latLng).subscribe ({
+            pinAddress.postValue(it.results[0].formatted_address)
+        },{
+            Log.e("error", "${it.message}")
+        })
     }
 
-    private fun getUserUpdate() {
-        addSubscription(
-                userRepository.getUser().subscribe {
-                    user.postValue(it)
-                })
-    }
 
-    fun sendEventOne() {
-        RxBus.publish(ReplaceFragmentEvent(LoginFragment()))
-    }
-
-    fun sendEventTwo() {
-        RxBus.publish(ReplaceFragmentEvent(LoginFragment()))
-    }
-
-    override fun onCleared() {
-        super.onCleared()
-
-        destroySubscription()
-    }
 }

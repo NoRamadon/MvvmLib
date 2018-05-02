@@ -1,7 +1,6 @@
 package com.dmi.mvvm_kotlin.vm
 
 import android.app.Application
-import android.arch.lifecycle.LifecycleOwner
 import android.content.Intent
 import android.text.Editable
 import android.util.Log

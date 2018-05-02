@@ -1,8 +1,14 @@
 <resources>
-    <string name="app_name">MVVM-Kotlin</string>
+    <string name="app_name">Sample</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="send_event_one">send event one</string>
     <string name="send_event_two">send event two</string>
+
+    <string name="google_maps_key" templateMergeStrategy="preserve" translatable="false">
+        AIzaSyAwBa16Py9vyYaPTF1-nEV_hy-DGz8AHy0
+    </string>
+    <string name="fetching_address">Fetching address …</string>
+    <string name="base_url">http://maps.googleapis.com/maps/api/</string>
 </resources>
