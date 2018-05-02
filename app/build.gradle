@@ -54,6 +54,8 @@ dependencies {
 
     //Local unit tests
     testImplementation deps.test.junit
+    testImplementation deps.test.mockito
+    testImplementation deps.test.mockWebService
 }
 repositories {
     mavenCentral()

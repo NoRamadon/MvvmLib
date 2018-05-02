@@ -13,12 +13,11 @@ class MainViewModel(application: Application) : BaseViewModel(application) {
     val pinAddress = MutableLiveData<String>()
 
     fun receiveUpdateLocation(latLng: LatLng) {
-        MapUseCase().getAddress(latLng).subscribe ({
-            pinAddress.postValue(it.results[0].formatted_address)
+        val location = "${latLng.latitude},${latLng.longitude}"
+        MapUseCase().getAddress(location).subscribe ({
+            pinAddress.postValue(it)
         },{
             Log.e("error", "${it.message}")
         })
     }
-
-
 }

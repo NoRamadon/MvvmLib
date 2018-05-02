@@ -20,7 +20,9 @@ buildscript {
             'picasso'          : '2.5.2',
             'rxJava'           : '2.1.7',
             'rxAndroid'        : '2.0.1',
-            'junit'            : '4.12'
+            'junit'            : '4.12',
+            'mockito'          : '2.11.0',
+            'mockWebService'   : '3.10.0'
     ]
 
     ext.deps = [
@@ -64,7 +66,9 @@ buildscript {
                     'permissionProcessor'    : "com.github.hotchemi:permissionsdispatcher-processor:${versions.permissions}"
             ],
             test     : [
-                    'junit'          : "junit:junit:${versions.junit}"
+                    'junit'          : "junit:junit:${versions.junit}",
+                    'mockito'        : "org.mockito:mockito-core:${versions.mockito}",
+                    'mockWebService' : "com.squareup.okhttp3:mockwebserver:${versions.mockWebService}"
             ]
     ]
 

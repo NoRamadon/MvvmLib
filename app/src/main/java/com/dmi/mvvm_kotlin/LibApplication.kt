@@ -6,7 +6,7 @@ import com.dmi.mvvm_kotlin.di.DaggerAppComponent
 import com.dmi.mvvm_kotlin.di.NetModule
 import com.dmi.mvvm_kotlin.di.RepositoryModule
 
-class LibApplication: Application() {
+open class LibApplication: Application() {
 
     companion object {
         @JvmStatic lateinit var appComponent: AppComponent
