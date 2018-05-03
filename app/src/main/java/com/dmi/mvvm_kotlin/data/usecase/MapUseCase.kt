@@ -3,6 +3,7 @@ package com.dmi.mvvm_kotlin.data.usecase
 import com.dmi.mvvm_kotlin.data.remote.WebService
 import com.jakewharton.retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import io.reactivex.Observable
+import io.reactivex.Single
 import io.reactivex.schedulers.Schedulers
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
@@ -10,7 +11,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 open class MapUseCase {
 
-    fun getAddress(latLng: String): Observable<String> {
+    fun getAddress(latLng: String): Single<String> {
         val webService = builder.build().create(WebService::class.java)
         return webService.getAddress(latLng)
                 .subscribeOn(Schedulers.io())
