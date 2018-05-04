@@ -1,9 +1,7 @@
 package com.dmi.mvvm_kotlin.data.remote
 
-import com.dmi.mvvm_kotlin.data.model.GoogleMapResponse
-import io.reactivex.Observable
+import com.dmi.mvvm_kotlin.data.model.MapResponse
 import io.reactivex.Single
-import retrofit2.Call
 import retrofit2.http.GET
 import retrofit2.http.Query
 
@@ -11,5 +9,5 @@ import retrofit2.http.Query
 interface WebService {
 
     @GET("geocode/json?")
-    fun getAddress(@Query("latlng") latlng: String): Single<GoogleMapResponse>
+    fun getAddress(@Query("latlng") latlng: String): Single<MapResponse>
 }

@@ -35,7 +35,7 @@
             android:textColor="@color/colorPrimary"
             android:hint="@string/fetching_address"
             android:padding="8dp"
-            android:text="@{vm.pinAddress}"
+            android:text="@{vm.pinAddress.address}"
             app:layout_constraintBottom_toBottomOf="@+id/map"
             tools:layout_editor_absoluteX="16dp" />
 

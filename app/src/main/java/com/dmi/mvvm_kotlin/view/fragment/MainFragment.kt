@@ -4,8 +4,6 @@ import android.annotation.SuppressLint
 import android.os.Bundle
 import com.android.databinding.library.baseAdapters.BR
 import com.dmi.mvvm_kotlin.R
-import com.dmi.mvvm_kotlin.bus.RxBus
-import com.dmi.mvvm_kotlin.bus.event.ReceiveLatLngEvent
 import com.dmi.mvvm_kotlin.databinding.FragmentMainBinding
 import com.dmi.mvvm_kotlin.view.base.BaseFragment
 import com.dmi.mvvm_kotlin.vm.MainViewModel
