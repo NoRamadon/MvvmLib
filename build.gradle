@@ -13,6 +13,8 @@ buildscript {
             'constraint'       : '1.0.2',
             'dagger'           : '2.12',
             'liveData'         : '1.1.1',
+            'room'             : '1.1.0',
+            'paging'           : '1.0.0',
             'gson'             : '2.8.0',
             'retrofit'         : '2.3.0',
             'retrofitRxAdapter': '1.0.0',
@@ -53,6 +55,10 @@ buildscript {
                     'gson'             : "com.google.code.gson:gson:${versions.gson}",
                     'liveDataProcessor': "android.arch.lifecycle:compiler:${versions.liveData}",
                     'liveData'         : "android.arch.lifecycle:extensions:${versions.liveData}",
+                    'room'             : "android.arch.persistence.room:runtime:${versions.room}",
+                    'roomProcessor'    : "android.arch.persistence.room:compiler:${versions.room}",
+                    'roomRx'           : "android.arch.persistence.room:rxjava2:${versions.room}",
+                    'paging'           : "android.arch.paging:runtime:${versions.paging}"
             ],
             square   : [
                     'retrofit'         : "com.squareup.retrofit2:retrofit:${versions.retrofit}",

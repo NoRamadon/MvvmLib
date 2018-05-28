@@ -45,6 +45,10 @@ dependencies {
     implementation deps.google.gson
     annotationProcessor deps.google.liveDataProcessor
     implementation deps.google.liveData
+    implementation deps.google.paging
+    implementation deps.google.room
+    kapt deps.google.roomProcessor
+    implementation deps.google.roomRx
 
     implementation deps.square.picasso
     implementation deps.square.retrofit

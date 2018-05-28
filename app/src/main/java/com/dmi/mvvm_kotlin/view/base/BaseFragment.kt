@@ -3,7 +3,6 @@ package com.dmi.mvvm_kotlin.view.base
 import android.databinding.DataBindingUtil
 import android.databinding.ViewDataBinding
 import android.os.Bundle
-import android.support.annotation.LayoutRes
 import android.support.v4.app.Fragment
 import android.util.Log
 import android.view.LayoutInflater
@@ -11,6 +10,7 @@ import android.view.View
 import android.view.ViewGroup
 import com.dmi.mvvm_kotlin.R
 import com.dmi.mvvm_kotlin.bus.RxBus
+import com.dmi.mvvm_kotlin.bus.event.AddFragmentEvent
 import com.dmi.mvvm_kotlin.bus.event.ReplaceFragmentEvent
 import com.dmi.mvvm_kotlin.bus.event.RxBusEvent
 import io.reactivex.disposables.CompositeDisposable
@@ -78,14 +78,22 @@ abstract class BaseFragment<B : ViewDataBinding, out VM : BaseViewModel> : Fragm
     private fun registerBus(): Disposable{
         return RxBus.listen(RxBusEvent::class.java).subscribe({
             when(it){
-                is ReplaceFragmentEvent -> replaceFragment(it)
+                is ReplaceFragmentEvent -> replaceFragment(it.fragment)
+                is AddFragmentEvent -> addFragment(it.fragment)
             }
         })
     }
 
-    private fun replaceFragment(event: ReplaceFragmentEvent){
+    private fun replaceFragment(fragment: Fragment){
         activity!!.supportFragmentManager.beginTransaction()
-                .replace(R.id.mainContent, event.fragment)
+                .replace(R.id.mainContent, fragment)
+                .commit()
+    }
+
+    private fun addFragment(fragment: Fragment){
+        activity!!.supportFragmentManager.beginTransaction()
+                .add(R.id.mainContent, fragment)
+                .addToBackStack(fragment.tag)
                 .commit()
     }
 

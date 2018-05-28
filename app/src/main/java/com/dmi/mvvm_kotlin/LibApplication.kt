@@ -1,10 +1,7 @@
 package com.dmi.mvvm_kotlin
 
 import android.app.Application
-import com.dmi.mvvm_kotlin.di.AppComponent
-import com.dmi.mvvm_kotlin.di.DaggerAppComponent
-import com.dmi.mvvm_kotlin.di.NetModule
-import com.dmi.mvvm_kotlin.di.RepositoryModule
+import com.dmi.mvvm_kotlin.di.*
 
 open class LibApplication: Application() {
 
@@ -19,6 +16,7 @@ open class LibApplication: Application() {
                 .builder()
                 .repositoryModule(RepositoryModule())
                 .netModule(NetModule(getString(R.string.base_url)))
+                .dataBaseModule(DataBaseModule(this))
                 .build()
     }
 }

@@ -6,7 +6,7 @@ import android.support.v4.app.Fragment
 import android.support.v7.app.AppCompatActivity
 import com.dmi.mvvm_kotlin.R
 
-abstract class BaseActivity: AppCompatActivity(){
+abstract class BaseActivity : AppCompatActivity() {
 
     /**
      * @return layout resource id
@@ -27,6 +27,14 @@ abstract class BaseActivity: AppCompatActivity(){
             supportFragmentManager.beginTransaction()
                     .replace(R.id.mainContent, firstFragment)
                     .commit()
+        }
+    }
+
+    override fun onBackPressed() {
+        if (fragmentManager.backStackEntryCount > 0){
+            fragmentManager.popBackStack()
+        } else {
+            super.onBackPressed()
         }
     }
 }
