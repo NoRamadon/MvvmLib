@@ -7,7 +7,7 @@ import com.dmi.mvvm_kotlin.view.fragment.LoginFragment
 
 class LoginActivity : BaseActivity() {
 
-    override val firstFragment: Fragment by lazy { LoginFragment() }
+    // override val firstFragment: Fragment by lazy { LoginFragment() }
 
     override fun getLayoutId(): Int {
        return R.layout.activity_login

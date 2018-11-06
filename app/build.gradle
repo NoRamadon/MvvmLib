@@ -41,6 +41,9 @@ dependencies {
     implementation deps.kotlin.stdlib
 
     implementation deps.google.dagger
+    implementation deps.google.daggerSupport
+    implementation 'com.android.support:support-v4:27.1.1'
+    implementation 'com.android.support.constraint:constraint-layout:1.1.3'
     kapt deps.google.daggerProcessor
     implementation deps.google.gson
     annotationProcessor deps.google.liveDataProcessor
@@ -60,6 +63,7 @@ dependencies {
     testImplementation deps.test.junit
     testImplementation deps.test.mockito
     testImplementation deps.test.mockWebService
+    testImplementation deps.test.archCoreTest
 }
 repositories {
     mavenCentral()

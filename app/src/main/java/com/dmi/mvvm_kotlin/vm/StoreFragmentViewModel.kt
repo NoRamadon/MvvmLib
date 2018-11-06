@@ -1,15 +1,20 @@
 package com.dmi.mvvm_kotlin.vm
 
+import android.annotation.SuppressLint
 import android.app.Application
 import android.arch.lifecycle.LiveData
 import android.arch.paging.LivePagedListBuilder
 import android.arch.paging.PagedList
 import com.dmi.mvvm_kotlin.LibApplication
+import com.dmi.mvvm_kotlin.bus.RxBus
+import com.dmi.mvvm_kotlin.bus.event.ReplaceFragmentEvent
 import com.dmi.mvvm_kotlin.data.local.PlaceDao
 import com.dmi.mvvm_kotlin.data.model.Place
 import com.dmi.mvvm_kotlin.data.model.Result
 import com.dmi.mvvm_kotlin.data.usecase.MapUseCase
 import com.dmi.mvvm_kotlin.view.base.BaseViewModel
+import com.dmi.mvvm_kotlin.view.fragment.MainFragment
+import com.dmi.mvvm_kotlin.view.fragment.StoreFragment
 import java.util.concurrent.TimeUnit
 import javax.inject.Inject
 
@@ -30,16 +35,18 @@ class StoreFragmentViewModel (application: Application) : BaseViewModel(applicat
                 .build()).build()
     }
 
+    fun goMainScreen(){
+        RxBus.publish(ReplaceFragmentEvent(MainFragment()))
+    }
 
 
-
-
+    @SuppressLint("CheckResult")
     private fun getNearBy(){
         MapUseCase().getNearBy("11.574471, 104.926823")
                 .delay(10, TimeUnit.SECONDS)
-                .subscribe (this::receiveNearBy,{
+                .subscribe (this::receiveNearBy) {
                     println(it.localizedMessage)
-                })
+                }
     }
 
     private fun receiveNearBy(place: Place){

@@ -2,9 +2,9 @@ package com.dmi.mvvm_kotlin.view.base
 
 import android.os.Bundle
 import android.support.annotation.LayoutRes
-import android.support.v4.app.Fragment
 import android.support.v7.app.AppCompatActivity
-import com.dmi.mvvm_kotlin.R
+import com.dmi.mvvm_kotlin.util.ObservableManager
+import io.reactivex.disposables.Disposable
 
 abstract class BaseActivity : AppCompatActivity() {
 
@@ -17,24 +17,18 @@ abstract class BaseActivity : AppCompatActivity() {
     /**
      * @return fragment
      */
-    abstract val firstFragment: Fragment
+    // abstract val firstFragment: Fragment
+    private val cacheObservableManager = ObservableManager()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(getLayoutId())
 
-        if (savedInstanceState == null) {
+        /*if (savedInstanceState == null) {
             supportFragmentManager.beginTransaction()
                     .replace(R.id.mainContent, firstFragment)
                     .commit()
-        }
+        }*/
     }
 
-    override fun onBackPressed() {
-        if (fragmentManager.backStackEntryCount > 0){
-            fragmentManager.popBackStack()
-        } else {
-            super.onBackPressed()
-        }
-    }
 }

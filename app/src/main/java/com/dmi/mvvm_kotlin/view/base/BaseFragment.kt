@@ -17,7 +17,7 @@ import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.disposables.Disposable
 
 
-abstract class BaseFragment<B : ViewDataBinding, out VM : BaseViewModel> : Fragment() {
+abstract class BaseFragment<B : ViewDataBinding, VM : BaseViewModel> : Fragment() {
 
     private lateinit var mRootView: View
     private lateinit var mViewDataBinding: B
@@ -43,7 +43,7 @@ abstract class BaseFragment<B : ViewDataBinding, out VM : BaseViewModel> : Fragm
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        retainInstance = true //make live data survive on configuration change
+       // retainInstance = true //make live data survive on configuration change
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
@@ -76,12 +76,12 @@ abstract class BaseFragment<B : ViewDataBinding, out VM : BaseViewModel> : Fragm
     }
 
     private fun registerBus(): Disposable{
-        return RxBus.listen(RxBusEvent::class.java).subscribe({
+        return RxBus.listen(RxBusEvent::class.java).subscribe {
             when(it){
                 is ReplaceFragmentEvent -> replaceFragment(it.fragment)
                 is AddFragmentEvent -> addFragment(it.fragment)
             }
-        })
+        }
     }
 
     private fun replaceFragment(fragment: Fragment){

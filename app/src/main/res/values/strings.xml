@@ -11,4 +11,11 @@
     </string>
     <string name="fetching_address">Fetching address …</string>
     <string name="base_url">http://maps.googleapis.com/maps/api/</string>
+    <string name="download">Download</string>
+    <string name="open_fragment">Open Fragment</string>
+    <string name="download_url">download url</string>
+    <string name="random_task">Random Task</string>
+    <string name="done">Done</string>
+    <string name="start_task">Start Task</string>
+    <string name="open_mvp">open mvp</string>
 </resources>

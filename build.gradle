@@ -51,6 +51,7 @@ buildscript {
             ],
             google   : [
                     'dagger'           : "com.google.dagger:dagger:${versions.dagger}",
+                    'daggerSupport'    : "com.google.dagger:dagger-android-support:${versions.dagger}",
                     'daggerProcessor'  : "com.google.dagger:dagger-compiler:${versions.dagger}",
                     'gson'             : "com.google.code.gson:gson:${versions.gson}",
                     'liveDataProcessor': "android.arch.lifecycle:compiler:${versions.liveData}",
@@ -74,7 +75,8 @@ buildscript {
             test     : [
                     'junit'          : "junit:junit:${versions.junit}",
                     'mockito'        : "org.mockito:mockito-core:${versions.mockito}",
-                    'mockWebService' : "com.squareup.okhttp3:mockwebserver:${versions.mockWebService}"
+                    'mockWebService' : "com.squareup.okhttp3:mockwebserver:${versions.mockWebService}",
+                    'archCoreTest'   : "android.arch.core:core-testing:${versions.archComp}"
             ]
     ]
 
