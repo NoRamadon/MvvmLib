@@ -2,16 +2,12 @@ package com.dmi.mvvm_kotlin.view.activity
 
 import android.arch.lifecycle.MutableLiveData
 import android.os.Bundle
-import android.os.PersistableBundle
-import android.support.annotation.MainThread
 import com.dmi.mvvm_kotlin.R
+import com.dmi.mvvm_kotlin.setLiveData
 import com.dmi.mvvm_kotlin.view.base.mvp.BaseActivity
 import com.dmi.mvvm_kotlin.view.presenter.MvpViewModelPresenter
 import com.dmi.mvvm_kotlin.view.presenter.MvpViewModelVista
 import kotlinx.android.synthetic.main.activity_mvp_with_view_model.*
-import android.databinding.adapters.TextViewBindingAdapter.setText
-import android.widget.Toast
-import com.dmi.mvvm_kotlin.setLiveData
 
 
 class MvpWithViewModelActivity : BaseActivity<MvpViewModelVista.View, MvpViewModelVista.Presenter>(), MvpViewModelVista.View {

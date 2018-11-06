@@ -7,8 +7,8 @@ import java.util.*
 
 class ObservableManager {
 
-    private var subscriptions = CompositeDisposable()
-    private val listDisposable = LinkedHashMap<Int, Disposable>()
+    var subscriptions = CompositeDisposable()
+    val listDisposable = LinkedHashMap<Int, Disposable>()
 
     fun add(disposable: Disposable) {
         getCompositeDisposable().add(disposable)
